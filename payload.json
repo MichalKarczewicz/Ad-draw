@@ -42,6 +42,12 @@
          "images":{
             "mobile banner":"https://majkesz.pl/grafika.jpg"
          }
+      },
+      {
+         "link":"http://127.0.0.1:5500",
+         "images":{
+            "mobile banner":"https://pixabay.com/tree.jpg"
+         }
       }
    ]
 }

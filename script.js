@@ -22,9 +22,13 @@ const getRandomAd = (ads) =>{
     const { banners } = ads;
     const currentDomain = window.location.hostname;
 
-    console.log('Aktualna nazwa domeny:', currentDomain);
-
-    console.log(banners)
+    const filteredAds = banners.filter( ads => {
+        let itemDomain = new URL(ads.link).hostname;
+        return itemDomain !== currentDomain
+    })
+    
+    console.log("Starting array", banners)
+    console.log("Filtered array: ", filteredAds)
 }
 
 
