@@ -3,9 +3,9 @@
       {
          "link":"https://przeksztalcenia.pro/",
          "images":{
-            "wide skyscraper":"https://przeksztalcenia.pro/cokolwiek.png",
-            "leaderboard":"https://przeksztalcenia.pro/cokolwiek2.png",
-            "large rectangle":"https://przeksztalcenia.pro/cokolwiek.webp"
+            "wide skyscraper":"https://przeksztalcenia.pro/wide-cokolwiek.png",
+            "leaderboard":"https://przeksztalcenia.pro/leader-cokolwiek2.png",
+            "large rectangle":"https://przeksztalcenia.pro/large-cokolwiek.webp"
          },
          "configuration":{
             "rel":[
@@ -21,8 +21,8 @@
       {
          "link":"https://bezproblemow.pl/",
          "images":{
-            "mobile banner":"https://images.bezproblemow.pl/cokolwiek.jpg",
-            "leaderboard":"https://pixabay.com/cokolwiek.jpg"
+            "mobile banner":"https://images.bezproblemow.pl/mobile-cokolwiek.jpg",
+            "leaderboard":"https://pixabay.com/leader-cokolwiek.jpg"
          },
          "configuration":{
             "rel":[
@@ -40,7 +40,8 @@
       {
          "link":"https://majkesz.pl/",
          "images":{
-            "mobile banner":"https://majkesz.pl/grafika.jpg"
+            "mobile banner":"https://majkesz.pl/grafika.jpg",
+            "leaderboard": "https://majkesz.pl/leader-grafika.png"
          }
       },
       {
