@@ -1,0 +1,47 @@
+{
+   "banners":[
+      {
+         "link":"https://przeksztalcenia.pro/",
+         "images":{
+            "wide skyscraper":"https://przeksztalcenia.pro/cokolwiek.png",
+            "leaderboard":"https://przeksztalcenia.pro/cokolwiek2.png",
+            "large rectangle":"https://przeksztalcenia.pro/cokolwiek.webp"
+         },
+         "configuration":{
+            "rel":[
+               "nofollow",
+               "noindex"
+            ]
+         },
+         "tags":[
+            "law",
+            "company"
+         ]
+      },
+      {
+         "link":"https://bezproblemow.pl/",
+         "images":{
+            "mobile banner":"https://images.bezproblemow.pl/cokolwiek.jpg",
+            "leaderboard":"https://pixabay.com/cokolwiek.jpg"
+         },
+         "configuration":{
+            "rel":[
+               "opener"
+            ],
+            "target":"_blank"
+         },
+         "tags":[
+            "law",
+            "company",
+            "property",
+            "real estate"
+         ]
+      },
+      {
+         "link":"https://majkesz.pl/",
+         "images":{
+            "mobile banner":"https://majkesz.pl/grafika.jpg"
+         }
+      }
+   ]
+}
