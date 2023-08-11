@@ -11,7 +11,9 @@
             "rel":[
                "nofollow",
                "noindex"
-            ]
+            ],
+            "target":"_blank"
+            
          },
          "tags":[
             "law",
@@ -21,6 +23,7 @@
       {
          "link":"https://bezproblemow.pl/",
          "images":{
+            "wide skyscraper":"https://pixabay.com/wide-cokolwiek.png",
             "mobile banner":"https://images.bezproblemow.pl/mobile-cokolwiek.jpg",
             "leaderboard":"https://pixabay.com/leader-cokolwiek.jpg"
          },
@@ -41,7 +44,15 @@
          "link":"https://majkesz.pl/",
          "images":{
             "mobile banner":"https://majkesz.pl/grafika.jpg",
-            "leaderboard": "https://majkesz.pl/leader-grafika.png"
+            "leaderboard": "https://majkesz.pl/leader-grafika.png",
+            "wide skyscraper" : "https://media.istockphoto.com/id/1406114828/pl/zdj%C4%99cie/budynek-wie%C5%BCowca-mieszkanie-wie%C5%BCe-biurowe.jpg?s=2048x2048&w=is&k=20&c=0MpL9pJJHSTbXl5on5wMjHM0vwYNfV0pMYHtprDwOl0="
+
+         },
+         "configuration":{
+            "rel":[
+               "opener"
+            ],
+            "target":"_self"
          }
       },
       {

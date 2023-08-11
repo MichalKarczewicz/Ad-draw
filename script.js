@@ -1,5 +1,10 @@
+// True to prepare advertisement img 
+const addAdvertisement = true;
+// Name of ad class 
+const adClass = "ad";
 // Array to store the data from json file 
 let data = [];
+
 
 // Function to get data from json file
 async function getAdsList(){
@@ -14,9 +19,8 @@ async function getAdsList(){
   }
 }
 
-const getCurrentDomain = (banners) => {
-  const currentDomain = window.location.hostname;
-  return currentDomain;
+const getCurrentDomain = () => {
+  return window.location.hostname;
 }
 
 // Function to check the current domain and filter data
@@ -34,14 +38,14 @@ const getRandomAdURL = (ads) => {
 }
 
 const filterBannerByType = (filteredAds, type) => {
-  if(type === undefined){
-    return getRandomAdURL(filteredAds.map(item => Object.values(item.images)));
-  }else{
-    const imagesType = filteredAds.map(item => item.images[type])
+  
+  if(type !== undefined){
+    const adType = filteredAds.map(item => item.images[type])
     .filter(value => value !== undefined)
-    .map(value => `${value}`);
-    return getRandomAdURL(imagesType)
+    return getRandomAdURL(adType)
   }
+    
+  return getRandomAdURL(filteredAds.map(item => Object.values(item.images)));
 }
 
 /*
@@ -49,22 +53,46 @@ const filterBannerByType = (filteredAds, type) => {
 */
 const getRandomAd = (data, type) =>{
     const { banners } = data;
-    const filteredAds = filterAdsByDomain(banners, getCurrentDomain(banners));
+    const filteredAds = filterAdsByDomain(banners, getCurrentDomain());
     const randomAd = filterBannerByType(filteredAds, type);
-
-    console.log("losowa reklama:", randomAd)
+    
     return randomAd 
 }
 
+const setAdvertisement = (advertisement) => {
+  const foundItem = data.banners.find(ad =>
+    Object.values(ad.images).includes(advertisement)
+  );
+  const configuration = foundItem ? foundItem.configuration : null;
+  const tags = foundItem ? foundItem.tags : null;
+
+  const imgContainer = document.querySelector(`.${adClass}`);
+  const imgElement = document.createElement('img');
+  imgElement.src = advertisement;
+
+  if (configuration.rel) {
+    imgElement.setAttribute('rel', configuration.rel.join(' '));
+  }
+  if (configuration.target) {
+    imgElement.setAttribute('target', configuration.target);
+  }
+  if(tags){
+    imgElement.setAttribute('data-tags', tags.join(' '));
+  }
+  
+  imgContainer.appendChild(imgElement);
+}
+
+// Main
+
 async function main(){
   await getAdsList();
+
   getRandomAd(data);
-  getRandomAd(data, "mobile banner");
+  getRandomAd(data, "wide skyscraper");
+  setAdvertisement(getRandomAd(data, "leaderboard"));
 }
 
 window.onload = () => {
     main();
 };
-
-// podejscie ze uzytkownik wprowadza ze chce reklame wylosowac typu 
-// "wide_skyscraper" i losuje z wszystkich dostepnych wide_skyscraperow
