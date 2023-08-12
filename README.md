@@ -8,7 +8,6 @@ The program compares the site's domain name, with a banners.link in the ad array
 Use this format. You can add more rel attributes or other target. You can also add more tags. 
 
 ```json
-
 {
    "banners":[
       {
@@ -29,6 +28,7 @@ Use this format. You can add more rel attributes or other target. You can also a
       },
    ]
 }
+```
 
 ## MAIN
 
