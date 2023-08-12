@@ -1,9 +1,7 @@
-// True to prepare advertisement img 
-const addAdvertisement = true;
-// Name of ad class 
-const adClass = "ad";
 // Array to store the data from json file 
 let data = [];
+// Name of advertisement class 
+let adClass = "ad";
 
 
 // Function to get data from json file
@@ -31,13 +29,17 @@ const filterAdsByDomain = (banners, currentDomain) => {
     });
 }
 
+// Function to return single advertisement 
 const getRandomAdURL = (ads) => {
   const allAdsURLs = Object.values(ads).flat();
   const randomIndex = Math.floor(Math.random() * allAdsURLs.length);
   return allAdsURLs[randomIndex];
 }
 
-const filterBannerByType = (filteredAds, type) => {
+// Function to return ads by type
+// For example, only mobile banners
+// If type is undefined, then the function will randomize after all ads
+const filterAdsByType = (filteredAds, type) => {
   
   if(type !== undefined){
     const adType = filteredAds.map(item => item.images[type])
@@ -48,14 +50,12 @@ const filterBannerByType = (filteredAds, type) => {
   return getRandomAdURL(filteredAds.map(item => Object.values(item.images)));
 }
 
-/*
-  Single ad randomization function
-*/
+
 const getRandomAd = (data, type) =>{
     const { banners } = data;
     const filteredAds = filterAdsByDomain(banners, getCurrentDomain());
-    const randomAd = filterBannerByType(filteredAds, type);
-    
+    const randomAd = filterAdsByType(filteredAds, type);
+   
     return randomAd 
 }
 
@@ -83,14 +83,15 @@ const setAdvertisement = (advertisement) => {
   imgContainer.appendChild(imgElement);
 }
 
-// Main
-
 async function main(){
   await getAdsList();
-
+  
   getRandomAd(data);
   getRandomAd(data, "wide skyscraper");
+
   setAdvertisement(getRandomAd(data, "leaderboard"));
+  adClass = "ad2"
+  setAdvertisement(getRandomAd(data, "wide skyscraper"));
 }
 
 window.onload = () => {
