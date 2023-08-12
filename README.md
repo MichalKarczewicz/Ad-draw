@@ -7,6 +7,8 @@ A program in vanilla Javascript that randomizes ads on a page by excluding ads f
 The program compares the site's domain name, with a banners.link in the ad array, and then displays ads for other sites. 
 Use this format. You can add more rel attributes or other target. You can also add more tags. 
 
+```json
+
 {
    "banners":[
       {
@@ -33,10 +35,12 @@ Use this format. You can add more rel attributes or other target. You can also a
 The program can be used in two ways. In one, you can draw ads without choosing a specific type, or in the other by specifying the type.
 
 > getRandomAd(data);
+
 > getRandomAd(data, "wide skyscraper");
 
 You can immediately set the drawn ad on your page by specifying the name of the container in which the img element is to be added.
 
 >  adClass = "ad"
+
 >  setAdvertisement(getRandomAd(data, "leaderboard"));
 
