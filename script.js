@@ -69,6 +69,7 @@ const setAdvertisement = (advertisement) => {
   const imgContainer = document.querySelector(`.${adClass}`);
   const imgElement = document.createElement('img');
   imgElement.src = advertisement;
+  imgElement.setAttribute('alt', "Advertisement");
 
   if (configuration.rel) {
     imgElement.setAttribute('rel', configuration.rel.join(' '));
