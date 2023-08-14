@@ -4,6 +4,12 @@ let data = [];
 let adClass = "ad";
 
 
+//
+window.onload = () => {
+  main();
+};
+
+
 // Function to get data from json file
 async function getAdsList(){
   try{
@@ -30,9 +36,11 @@ const filterAdsByDomain = (banners, currentDomain) => {
 }
 
 // Function to return single advertisement 
+// input: [Array(3), Array(3)] or ['https://example.com/example.png', "https://example.com/example.jpg"]
+// output: https://example.com/example.png
 const getRandomAdURL = (ads) => {
-  const allAdsURLs = Object.values(ads).flat();
-  const randomIndex = Math.floor(Math.random() * allAdsURLs.length);
+  const allAdsURLs = Object.values(ads).flat(); // One array ['https://example.com/example.png', "https://example.com/example.jpg"]
+  const randomIndex = Math.floor(Math.random() * allAdsURLs.length); 
   return allAdsURLs[randomIndex];
 }
 
@@ -46,7 +54,7 @@ const filterAdsByType = (filteredAds, type) => {
     .filter(value => value !== undefined)
     return getRandomAdURL(adType)
   }
-    
+  
   return getRandomAdURL(filteredAds.map(item => Object.values(item.images)));
 }
 
@@ -91,10 +99,4 @@ async function main(){
   getRandomAd(data, "wide skyscraper");
 
   setAdvertisement(getRandomAd(data, "leaderboard"));
-  adClass = "ad2"
-  setAdvertisement(getRandomAd(data, "wide skyscraper"));
 }
-
-window.onload = () => {
-    main();
-};
