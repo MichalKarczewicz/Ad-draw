@@ -1,0 +1,17 @@
+{
+  "name": "random_ad",
+  "version": "1.0.0",
+  "description": "A program in vanilla Javascript that randomizes ads on a page by excluding ads from the page they are currently on.",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "jest-environment-jsdom": "^29.6.2"
+  }
+}

@@ -39,6 +39,7 @@ const filterAdsByDomain = (banners, currentDomain) => {
 // input: [Array(3), Array(3)] or ['https://example.com/example.png', "https://example.com/example.jpg"]
 // output: https://example.com/example.png
 const getRandomAdURL = (ads) => {
+  if(ads === undefined || ads === null) return
   const allAdsURLs = Object.values(ads).flat(); // One array ['https://example.com/example.png', "https://example.com/example.jpg"]
   const randomIndex = Math.floor(Math.random() * allAdsURLs.length); 
   return allAdsURLs[randomIndex];
@@ -47,27 +48,34 @@ const getRandomAdURL = (ads) => {
 // Function to return ads by type
 // For example, only mobile banners
 // If type is undefined, then the function will randomize after all ads
+// Example input: [{..}. {..}, {..}] - 
+// {link: 'https://przeksztalcenia.pro/', images: {…}, configuration: {…}, tags: Array(2)}
+// output: https://majkesz.pl/leader-grafika.png
+
 const filterAdsByType = (filteredAds, type) => {
-  
   if(type !== undefined){
     const adType = filteredAds.map(item => item.images[type])
     .filter(value => value !== undefined)
+    
     return getRandomAdURL(adType)
   }
   
   return getRandomAdURL(filteredAds.map(item => Object.values(item.images)));
 }
 
-
 const getRandomAd = (data, type) =>{
     const { banners } = data;
-    const filteredAds = filterAdsByDomain(banners, getCurrentDomain());
-    const randomAd = filterAdsByType(filteredAds, type);
-   
+    const filteredAdsByDomain = filterAdsByDomain(banners, getCurrentDomain());
+    const randomAd = filterAdsByType(filteredAdsByDomain, type);
+      
+    
     return randomAd 
 }
 
 const setAdvertisement = (advertisement) => {
+  
+  if(data.banners === undefined) return
+
   const foundItem = data.banners.find(ad =>
     Object.values(ad.images).includes(advertisement)
   );
@@ -100,3 +108,7 @@ async function main(){
 
   setAdvertisement(getRandomAd(data, "leaderboard"));
 }
+
+module.exports = {
+  getRandomAdURL,
+};
