@@ -32,15 +32,10 @@ Use this format. You can add more rel attributes or other target. You can also a
 
 ## MAIN
 
-The program can be used in two ways. In one, you can draw ads without choosing a specific type, or in the other by specifying the type.
+The draw function is used to add an ad. Specify the type and id of the item to be added.
 
-> getRandomAd(data);
+> let adDrawer= new AdDrawer('./payload.json'); 
 
-> getRandomAd(data, "wide skyscraper");
+>  adDrawer.draw("large rectangle","ad");
 
-You can immediately set the drawn ad on your page by specifying the name of the container in which the img element is to be added.
-
->  adClass = "ad"
-
->  setAdvertisement(getRandomAd(data, "leaderboard"));
-
+> new AdDrawer('./payload.json').draw("large reactangle", "ad"); 

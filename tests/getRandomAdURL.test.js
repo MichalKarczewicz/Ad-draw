@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { getRandomAdURL } = require('../script.js')
+const { getRandomAdURL } = require('../AdDrawer.js')
 
 const inputValue = ['https://example.com/smth1.png', 
                     "https://example.com/value2.jpg",
