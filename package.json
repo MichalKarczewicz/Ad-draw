@@ -1,8 +1,8 @@
 {
-  "name": "random_ad",
+  "name": "Ad-draw",
   "version": "1.0.0",
   "description": "A program in vanilla Javascript that randomizes ads on a page by excluding ads from the page they are currently on.",
-  "main": "script.js",
+  "main": "AdDrawer.js",
   "scripts": {
     "test": "jest"
   },
