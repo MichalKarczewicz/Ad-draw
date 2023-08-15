@@ -21,6 +21,19 @@ class AdDrawer{
 
             const imgElement = document.createElement('img');
             
+            const imgSizes = {
+                'leaderboard': { width: '728px', height: '90px' },
+                'large rectangle': { width: '336px', height: '289px' },
+                'medium rectangle': { width: '300px', height: '250px' },
+                'mobile banner': { width: '300px', height: '50px' },
+                'wide skyscraper': { width: '160px', height: '600px' }
+            };
+
+            const imgSize = imgSizes[type];
+            imgElement.style.width = imgSize.width;
+            imgElement.style.height = imgSize.height;
+            
+            
             imgElement.src = ad;
             imgElement.setAttribute('alt', "Advertisement");
     
@@ -89,3 +102,4 @@ class AdDrawer{
     }
      
 }
+
