@@ -15,7 +15,7 @@ class AdDrawer{
             const config = foundItem ? foundItem.configuration : null;
             const tags = foundItem ? foundItem.tags : null;
 
-            const imgContainer = document.querySelector(`.${id}`);
+            const imgContainer = document.querySelector(`#${id}`);
 
             if(!imgContainer) return 
 
@@ -89,8 +89,3 @@ class AdDrawer{
     }
      
 }
-
-let adDrawer= new AdDrawer('./payload.json'); 
-adDrawer.draw("large rectangle","ad");
-
-
