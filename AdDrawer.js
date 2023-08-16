@@ -8,6 +8,9 @@ class AdDrawer{
 
         const setAd = (ad, id) => {
 
+
+            if(!ad) return
+
             const foundItem = this.ads.banners.find(adv =>
                 Object.values(adv.images).includes(ad)
             );
@@ -15,12 +18,12 @@ class AdDrawer{
             const config = foundItem ? foundItem.configuration : null;
             const tags = foundItem ? foundItem.tags : null;
 
+            // Check if a class exists
             const imgContainer = document.querySelector(`#${id}`);
-
             if(!imgContainer) return 
 
             const imgElement = document.createElement('img');
-            
+
             const imgSizes = {
                 'leaderboard': { width: '728px', height: '90px' },
                 'large rectangle': { width: '336px', height: '289px' },
@@ -28,7 +31,6 @@ class AdDrawer{
                 'mobile banner': { width: '300px', height: '50px' },
                 'wide skyscraper': { width: '160px', height: '600px' }
             };
-
             const imgSize = imgSizes[type];
             imgElement.style.width = imgSize.width;
             imgElement.style.height = imgSize.height;
@@ -61,11 +63,12 @@ class AdDrawer{
         // output: https://majkesz.pl/leader-grafika.png
         function filterAdsByType(filteredAds, type){
             const allowedTypes = ["wide skyscraper", "leaderboard", "large rectangle", "medium rectangle", "mobile banner"];
-            if(type === undefined || !allowedTypes.includes(type)) {
-                throw new Error("Unsupported type");   
-            }
+            if(type === undefined || !allowedTypes.includes(type)) return 
+
             const adType = filteredAds.map(item => item.images[type])
             .filter(value => value !== undefined)
+            
+            if(adType.length === 0) return
             
             return getRandomAdURL(adType)      
         }
@@ -102,4 +105,3 @@ class AdDrawer{
     }
      
 }
-
