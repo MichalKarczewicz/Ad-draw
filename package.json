@@ -1,5 +1,5 @@
 {
-  "name": "Ad-draw",
+  "name": "ad-draw",
   "version": "1.0.0",
   "description": "A program in vanilla Javascript that randomizes ads on a page by excluding ads from the page they are currently on.",
   "main": "AdDrawer.js",
@@ -12,6 +12,11 @@
   "type": "module",
   "devDependencies": {
     "jest": "^29.6.2",
-    "jest-environment-jsdom": "^29.6.2"
+    "jest-environment-jsdom": "^29.6.2",
+    "jsdom": "^22.1.0",
+    "node-fetch": "^3.3.2"
+  },
+  "directories": {
+    "test": "tests"
   }
 }

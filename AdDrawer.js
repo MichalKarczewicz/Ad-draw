@@ -64,12 +64,10 @@ class AdDrawer{
         function filterAdsByType(filteredAds, type){
             const allowedTypes = ["wide skyscraper", "leaderboard", "large rectangle", "medium rectangle", "mobile banner"];
             if(type === undefined || !allowedTypes.includes(type)) return 
-
-            const adType = filteredAds.map(item => item.images[type])
-            .filter(value => value !== undefined)
             
+            const adType = filteredAds.map(item => item.images[type]).filter(value => value !== undefined)
             if(adType.length === 0) return
-            
+           
             return getRandomAdURL(adType)      
         }
 
@@ -103,5 +101,4 @@ class AdDrawer{
             getRandomAd(data, type, id)
         })
     }
-     
 }

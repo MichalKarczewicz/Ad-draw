@@ -38,4 +38,4 @@ The draw function is used to add an ad. Specify the type and id of the item to b
 
 >  adDrawer.draw("large rectangle","ad");
 
-> new AdDrawer('./payload.json').draw("large reactangle", "ad"); 
+
