@@ -35,10 +35,3 @@ test('propely filter ads by type', () => {
 
     expect(value).toContain(value);
 })
-
-// Function to return ads by type
-        // For example, only mobile banners
-        // If type is undefined, then the function will randomize after all ads
-        // Example input: [{..}. {..}, {..}] - 
-        // {link: 'https://przeksztalcenia.pro/', images: {…}, configuration: {…}, tags: Array(2)}
-        // output: https://majkesz.pl/leader-grafika.png
