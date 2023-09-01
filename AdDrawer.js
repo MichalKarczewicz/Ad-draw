@@ -6,13 +6,13 @@ class AdDrawer{
     }
 
     draw(type, id) {
-        fetch(this.configuration)
-        .then(res => res.json())
-        .then(data => {  
+        return fetch(this.configuration)
+          .then(res => res.json())
+          .then(data => {
             this.ads = data;
-            this.getRandomAd(data, type, id)
-        })
-    }
+            return this.getRandomAd(data, type, id);
+          })
+      }
 
     setAd (ad, id){
 
