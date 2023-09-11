@@ -45,4 +45,4 @@ To check the tests add
 
 > module.exports = AdDrawer; 
 
-at the end of the file, and then use the npm test command in the console to run the tests.
+at the end of the file AdDrawer.js, and then use the npm test command in the console to run the tests.
