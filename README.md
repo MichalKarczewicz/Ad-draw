@@ -39,3 +39,10 @@ The draw function is used to add an ad. Specify the type and id of the item to b
 >  adDrawer.draw("large rectangle","ad");
 
 
+## TESTS 
+
+To check the tests add 
+
+> module.exports = AdDrawer; 
+
+at the end of the file, and then use the npm test command in the console to run the tests.
