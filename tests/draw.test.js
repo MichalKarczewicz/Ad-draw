@@ -4,6 +4,7 @@
  */
 
 const AdDrawer = require('../AdDrawer');
+const { mockProperty } = require('jest-mock');
 data = {
    "banners":[
       {
@@ -69,28 +70,105 @@ data = {
       }
    ]
 }
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve(data),
-  })
-);
 
 
+describe('AdDrawer', () => {
+   test('The constructor accepts the passed configuration', () => {
+      const customConfig = 'config.json';
+      const adDrawer = new AdDrawer(customConfig);
+      expect(adDrawer.configuration).toBe(customConfig);
+      expect(adDrawer.ads).toEqual([]);
+      expect(adDrawer.type).toBeNull();
+    });
 
- 
- describe("AdDrawer", () => {
-   const adDrawer = new AdDrawer(data);
- 
-   test("Draw is defined and called with arguments", async () => {
-     const setDrawSpy = jest.spyOn(adDrawer, "draw");
-     const setGetRandomAdSpy = jest.spyOn(adDrawer, "draw");
- 
-     const result = await adDrawer.draw("wide skyscraper", "ad");
-     expect(result).toBeDefined();
-     expect(setDrawSpy).toHaveBeenCalledWith("wide skyscraper", "ad");
+   test('The constructor sets default properties', () => {
+      const adDrawer = new AdDrawer();
+      expect(adDrawer.configuration).toBe('./payload.json');
+      expect(adDrawer.ads).toEqual([]);
+      expect(adDrawer.type).toBeNull();
+    });
+
+
+    test('getCurrentDomain should return the current domain', () => {
+      const adDrawer = new AdDrawer();
+      const originalWindow = global.window;
+      global.window = Object.create(originalWindow);
+
+      Object.defineProperty(global.window, 'location', {
+          value: {
+              hostname: 'przeksztalcenia.pl'
+          }
+      });
+   
+      const result = adDrawer.getCurrentDomain();
+      expect(result).toBe('przeksztalcenia.pl');
    });
- 
-   afterEach(() => {
-     jest.restoreAllMocks();
-   })
+
+  test('filterAdsByDomain filtering ads by domain', () => {
+    const adDrawer = new AdDrawer();
+    const { banners } = data
+
+    const filteredAds = adDrawer.filterAdsByDomain(banners, 'https://przeksztalcenia.pro/');
+    expect(filteredAds[0].link).toBe('https://przeksztalcenia.pro/');
+  });
+
+  
+  test('Function filterAdsByType It should return a random ad with "mobile banner" type', () => {
+   const adDrawer = new AdDrawer();
+   const { banners } = data;
+   const images = ['https://images.bezproblemow.pl/mobile-cokolwiek.jpg','https://majkesz.pl/grafika.jpg','https://pixabay.com/tree.jpg']
+  
+   const filteredAds = adDrawer.filterAdsByType(banners, 'mobile banner');
+
+   expect(adDrawer.type).toBe('mobile banner');
+   expect(images).toContain(filteredAds);
  });
+
+ test('Function filterAdsByType It should return undefined for a non-existent type', () => {
+   const adDrawer = new AdDrawer();
+   const { banners } = data;
+
+   const filteredAds = adDrawer.filterAdsByType(banners);
+
+   expect(filteredAds).toBeUndefined();
+   expect(adDrawer.type).toBeNull();
+ });
+
+ test('Function filterAdsByType It should return undefined for an empty ad list', () => {
+   const adDrawer = new AdDrawer();
+   const banners = [];
+   const filteredAds = adDrawer.filterAdsByType(banners, 'large rectangle');
+   expect(filteredAds).toBeUndefined();
+   expect(adDrawer.type).toBeNull();
+ });
+   
+  test('getRandomAdURL wybiera losową reklamę', () => {
+    const adDrawer = new AdDrawer();
+    const ads = ['https://example.com/a.png', 'https://example.com/b.png', 'https://example.com/c.png'];
+    const randomAd = adDrawer.getRandomAdURL(ads);
+    expect(ads.includes(randomAd)).toBe(true);
+  });
+
+  
+  
+  
+
+  test('draw wykonuje zapytanie i ustawia właściwości', async () => {
+    const adDrawer = new AdDrawer('https://example.com/api');
+    const type = 'large rectangle';
+    const id = 'ad-container';
+    const ad = 'https://przeksztalcenia.pro/large-cokolwiek.webp';
+
+    // Mockowanie funkcji fetch
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        json: () => Promise.resolve(data),
+      })
+    );
+
+    const result = await adDrawer.draw(type, id);
+
+    expect(result).toBe(ad);
+ 
+  });
+});
