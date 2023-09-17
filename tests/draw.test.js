@@ -142,7 +142,7 @@ describe('AdDrawer', () => {
    expect(adDrawer.type).toBeNull();
  });
    
-  test('getRandomAdURL wybiera losową reklamę', () => {
+  test('getRandomAdURL selects a random ad', () => {
     const adDrawer = new AdDrawer();
     const ads = ['https://example.com/a.png', 'https://example.com/b.png', 'https://example.com/c.png'];
     const randomAd = adDrawer.getRandomAdURL(ads);
@@ -153,7 +153,7 @@ describe('AdDrawer', () => {
   
   
 
-  test('draw wykonuje zapytanie i ustawia właściwości', async () => {
+  test('draw sets the properties', async () => {
     const adDrawer = new AdDrawer('https://example.com/api');
     const type = 'large rectangle';
     const id = 'ad-container';
