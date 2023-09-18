@@ -1,5 +1,5 @@
 class AdDrawer{
-    constructor(configuration){
+    constructor(configuration = './payload.json'){ // default path
        this.configuration = configuration;  
        this.ads = [];
        this.type = null;
@@ -88,19 +88,19 @@ class AdDrawer{
         const adType = filteredAds.map(item => item.images[type]).filter(value => value !== undefined)
         if(adType.length === 0) return
         this.type = type;
-
         return this.getRandomAdURL(adType)      
     }
 
     // Function to return single advertisement 
     // input: [Array(3), Array(3)] or ['https://example.com/example.png', "https://example.com/example.jpg"]
     // output: https://example.com/example.png
-    getRandomAdURL(ads){
-        if(ads === undefined || ads === null) return
-        const allAdsURLs = Object.values(ads).flat(); // One array ['https://example.com/example.png', "https://example.com/example.jpg"]
+    getRandomAdURL(ads) {
+        if (ads == null) return null;
+        const allAdsURLs = Object.values(ads).flat();
+        if (allAdsURLs.length === 0) return null;
         const randomIndex = Math.floor(Math.random() * allAdsURLs.length); 
         return allAdsURLs[randomIndex];
     }
 
-}
 
+}
